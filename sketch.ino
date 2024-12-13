@@ -2,10 +2,10 @@
 #include <HTTPClient.h>
 
 // Definição das portas para controle dos LEDs
-#define LED_AZUL 46
-#define LED_VERDE 2
-#define LED_VERMELHO 40
-#define LED_AMARELO 9
+#define led_azul 46
+#define led_verde 2
+#define led_vermelho 40
+#define led_amarelo 9
 
 // Definição do pino do botão
 const int BOTAO = 18;
@@ -24,19 +24,19 @@ int statusLDR = 0;
 
 void setup() {
   // Configuração dos pinos dos LEDs como saídas
-  pinMode(LED_AZUL, OUTPUT);
-  pinMode(LED_VERDE, OUTPUT);
-  pinMode(LED_VERMELHO, OUTPUT);
-  pinMode(LED_AMARELO, OUTPUT);
+  pinMode(led_azul, OUTPUT);
+  pinMode(led_verde, OUTPUT);
+  pinMode(led_vermelho, OUTPUT);
+  pinMode(led_amarelo, OUTPUT);
 
   // Configuração do pino do botão como entrada
   pinMode(BOTAO, INPUT);
 
   // Inicialização dos LEDs apagados
-  digitalWrite(LED_AZUL, LOW);
-  digitalWrite(LED_VERDE, LOW);
-  digitalWrite(LED_VERMELHO, LOW);
-  digitalWrite(LED_AMARELO, LOW);
+  digitalWrite(led_azul, LOW);
+  digitalWrite(led_verde, LOW);
+  digitalWrite(led_vermelho, LOW);
+  digitalWrite(led_amarelo, LOW);
 
   // Inicialização do monitor serial para debug
   Serial.begin(9600);
@@ -101,26 +101,26 @@ void loop() {
 
 // piscar o LED amarelo no modo noturno
 void piscaLedAmarelo() {
-  digitalWrite(LED_AMARELO, HIGH);
+  digitalWrite(led_amarelo, HIGH);
   delay(1000);
-  digitalWrite(LED_AMARELO, LOW);
+  digitalWrite(led_amarelo, LOW);
   delay(1000);
 }
 
 // controle do semáforo em modo convencional
 void semaforoConvencional() {
   // LED verde aceso por 3 segundos
-  digitalWrite(LED_VERDE, HIGH);
+  digitalWrite(led_verde, HIGH);
   delay(3000);
-  digitalWrite(LED_VERDE, LOW);
+  digitalWrite(led_verde, LOW);
 
   // LED amarelo aceso por 2 segundos
-  digitalWrite(LED_AMARELO, HIGH);
+  digitalWrite(led_amarelo, HIGH);
   delay(2000);
-  digitalWrite(LED_AMARELO, LOW);
+  digitalWrite(led_amarelo, LOW);
 
   // LED vermelho aceso por 5 segundos
-  digitalWrite(LED_VERMELHO, HIGH);
+  digitalWrite(led_vermelho, HIGH);
   delay(5000);
 
   // checa se o botão foi pressionado enquanto o LED vermelho estava aceso
@@ -128,12 +128,12 @@ void semaforoConvencional() {
   if (estadoBotao == HIGH) {
     Serial.println("Botão pressionado: abrindo semáforo em 1 segundo.");
     delay(1000);
-    digitalWrite(LED_VERMELHO, LOW); // apaga o LED vermelho
-    digitalWrite(LED_VERDE, HIGH);  // liga o LED verde
+    digitalWrite(led_vermelho, LOW); // apaga o LED vermelho
+    digitalWrite(led_verde, HIGH);  // liga o LED verde
     delay(3000); // semáforo aberto por 3 segundos
-    digitalWrite(LED_VERDE, LOW);  // apaga o LED verde
+    digitalWrite(led_verde, LOW);  // apaga o LED verde
   } else {
-    digitalWrite(LED_VERMELHO, LOW); // apaga o LED vermelho se o botão não foi pressionado
+    digitalWrite(led_vermelho, LOW); // apaga o LED vermelho se o botão não foi pressionado
   }
 }
 
