@@ -51,7 +51,7 @@ void setup() {
   Serial.println("Conectado ao WiFi com sucesso!"); // Considerando que saiu do loop acima, o ESP32 agora está conectado ao WiFi (outra opção é colocar este comando dentro do if abaixo)
 
   // Verifica estado do botão
-  estadoBotao = digitalRead(buttonPin);
+  estadoBotao = digitalRead(BOTAO);
   if (estadoBotao == HIGH) {
     Serial.println("Botão pressionado!");
   } else {
